@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://d15ey2pm2b72y"]
+
+[ext_resource type="Script" path="res://PauseMenu.gd" id="1_ec0e4"]
+[ext_resource type="Texture2D" uid="uid://bd7xdhpknt0p8" path="res://recursos/Sprites/pauseBg.png" id="2_60dp5"]
+[ext_resource type="Theme" uid="uid://bkqxuyfu6ktl6" path="res://menu/BTNtHEME.tres" id="3_1hcr2"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ec0e4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+texture = ExtResource("2_60dp5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="btnResume" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_1hcr2")
+text = "RESUME"
+
+[node name="btnMainMenu" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_1hcr2")
+text = "MAIN
+"
+
+[node name="btnQuit" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_1hcr2")
+text = "QUIT"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/btnResume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/btnMainMenu" to="." method="_on_btn_main_menu_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/btnQuit" to="." method="_on_btn_quit_pressed"]

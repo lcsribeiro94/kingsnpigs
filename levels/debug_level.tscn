@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf45ih7btt8o5"]
+
+[ext_resource type="PackedScene" uid="uid://bebewx12um1sl" path="res://levels/base_level.tscn" id="1_duary"]
+[ext_resource type="PackedScene" uid="uid://dv601bwtt5lgh" path="res://actors/king.tscn" id="2_p5y0e"]
+[ext_resource type="PackedScene" uid="uid://blngfc5oxb4a4" path="res://actors/door.tscn" id="4_pirec"]
+[ext_resource type="PackedScene" uid="uid://bpxcu87bblnrh" path="res://actors/small_pig.tscn" id="5_j3q5q"]
+
+[node name="debug_level" type="Node2D"]
+
+[node name="Level" parent="." instance=ExtResource("1_duary")]
+
+[node name="door_1" type="Node" parent="."]
+
+[node name="Door_A" parent="door_1" node_paths=PackedStringArray("link") instance=ExtResource("4_pirec")]
+z_index = 1
+position = Vector2(334, 388)
+link = NodePath("../Door_B")
+
+[node name="Door_B" parent="door_1" node_paths=PackedStringArray("link") instance=ExtResource("4_pirec")]
+z_index = 1
+position = Vector2(1087, 388)
+link = NodePath("../Door_A")
+
+[node name="King" parent="." instance=ExtResource("2_p5y0e")]
+z_index = 2
+position = Vector2(538, 369)
+
+[node name="Camera2D" type="Camera2D" parent="King"]
+position = Vector2(-7, -12)
+zoom = Vector2(3, 3)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Inimigos" type="Node" parent="."]
+
+[node name="smallPig" parent="Inimigos" instance=ExtResource("5_j3q5q")]
+position = Vector2(659, 402)
